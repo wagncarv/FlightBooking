@@ -17,7 +17,7 @@ defmodule FlightBooking.Bookings.Booking do
     }
   end
 
-  def naive_date_time(date) do
+  defp naive_date_time(date) do
     [day, month, year] = 
     date 
     |> String.split("/")
