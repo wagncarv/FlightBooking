@@ -9,7 +9,9 @@ defmodule FlightBooking.Bookings.Agent do
 
   def save(%Booking{} = booking), do: Agent.update(__MODULE__, &update_state(&1, booking))
 
-  defp get_user(state, booking_id) do
+  def get(id), do: Agent.get(__MODULE__, &get_booking(&1, id))
+
+  defp get_booking(state, booking_id) do
     case Map.get(state, booking_id) do
       nil -> {:error, "Booking not found"}
       booking -> {:ok, booking}

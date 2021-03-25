@@ -4,7 +4,7 @@ defmodule FlightBooking do
     alias FlightBooking.Bookings.Agent, as: BookingAgent
     alias FlightBooking.Users.Agent, as: UserAgent
     alias FlightBooking.Users.CreateOrUpdate, as: CreateOrUpdateUser
-    FlightBooking.Bookings.CreateOrUpdate, as: CreateOrUpdateBooking
+    alias FlightBooking.Bookings.CreateOrUpdate, as: CreateOrUpdateBooking
 
     def start_agents do
         UserAgent.start_link(%{})
@@ -12,6 +12,6 @@ defmodule FlightBooking do
     end
 
     defdelegate create_user(params), to: CreateOrUpdateUser, as: :call
-    defdelegate create_booking, to: CreateOrUpdateBooking, as: :call
-
+    defdelegate create_booking(id_user, params), to: CreateOrUpdateBooking, as: :call
+    defdelegate get_booking(param), to: CreateOrUpdateBooking, as: :get_booking
 end
