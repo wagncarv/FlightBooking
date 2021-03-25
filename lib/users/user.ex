@@ -3,10 +3,10 @@ defmodule FlightBooking.Users.User do
   @inforce_keys @keys
   defstruct @keys
 
-  def build(id, name, email, cpf) do
+  def build(name, email, cpf) do
     {:ok,
      %__MODULE__{
-       id: id,
+       id: UUID.uuid4(),
        name: name,
        email: email,
        cpf: cpf
